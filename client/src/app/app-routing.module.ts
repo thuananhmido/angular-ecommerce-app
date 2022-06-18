@@ -8,7 +8,11 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
 import { ProductComponent } from './product/product.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './auth/components/register/register.component';
+import { ProductManageComponent } from './admin/product-manage/product-manage.component';
 import { AuthGuardService } from './guards/auth-guard.service';
+import { ProductAddComponent } from './admin/product-add/product-add.component';
+import { ProductEditComponent } from './admin/product-edit/product-edit.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,6 +35,24 @@ const routes: Routes = [
     component: OrderHistoryComponent,
     canActivate: [AuthGuardService],
   },
+  {
+    path: 'admin/product_manage',
+    component:  ProductManageComponent,
+
+  },
+  {
+    path: 'admin/product_add',
+    component:  ProductAddComponent,
+  },
+  {
+    path: 'admin/product-edit',
+    component:  ProductEditComponent,
+  },
+  {
+    path: 'categories',
+    component:  CategoriesComponent,
+  },
+  { path: 'categories/:id', component: CategoriesComponent },
 ];
 
 @NgModule({

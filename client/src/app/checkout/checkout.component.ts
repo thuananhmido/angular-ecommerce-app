@@ -49,6 +49,7 @@ export class CheckoutComponent implements OnInit {
             this.products = res.products;
             this.currentStep = 4;
             this._cart.clearCart();
+            
           },
           (err) => {
             console.log(err);

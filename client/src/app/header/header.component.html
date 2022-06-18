@@ -123,22 +123,6 @@
     </ng-container>
   </div>
 </header>
-
-<!-- <div class="nav-container" *ngIf="!isMobile">
-  <nav>
-    <ul>
-      <li routerLink="/">Home</li>
-      <li routerLink="/login">Login</li>
-      <li routerLink="/register">Register</li>
-      <li routerLink="/profile">Profile</li>
-      <li routerLink="/cart">Cart</li>
-      <li routerLink="/product/1">Product</li>
-      <li routerLink="/checkout">Checkout</li>
-      <li routerLink="/order-history">Order History</li>
-    </ul>
-  </nav>
-</div> -->
-
 <div [className]="isMenuOpen ? 'side-menu show' : 'side-menu'">
   <i nz-icon nzType="close" nzTheme="outline" (click)="toggleMenu()"></i>
   <div class="side-menu__content">
@@ -150,6 +134,9 @@
         <li routerLink="/profile" (click)="toggleMenu()">Profile</li>
         <li routerLink="/order-history" (click)="toggleMenu()">
           Order History
+        </li>
+        <li routerLink="admin/product_manage" (click)="toggleMenu()">
+          Products Manage
         </li>
       </ul>
     </nav>

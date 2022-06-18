@@ -4,8 +4,11 @@ import {
   ViewEncapsulation,
   HostListener,
 } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { CartService } from '../services/cart.service';
+import { CategoriesService } from '../services/categories.service';
 import { ProductService } from '../services/product.service';
+import { Categories } from '../shared/models/categories.model';
 import { Products, Product } from '../shared/models/product.model';
 
 @Component({
@@ -16,24 +19,26 @@ import { Products, Product } from '../shared/models/product.model';
 })
 export class HomeComponent implements OnInit {
   products: Product[] = [];
-  categories: any[] = [
-    {
-      name: 'Laptops',
-    },
-    {
-      name: 'Accessories',
-    },
-    {
-      name: 'Cameras',
-    },
-  ];
+  // categories: any[] = [
+  //   {
+  //     name: 'Laptops',
+  //   },
+  //   {
+  //     name: 'Accessories',
+  //   },
+  //   {
+  //     name: 'Cameras',
+  //   },
+  // ];
+  categories: Categories[] = [];
   loading = false;
   productPageCounter = 1;
   additionalLoading = false;
 
   constructor(
     private productService: ProductService,
-    private cartService: CartService
+    private cartService: CartService,
+    private cateService :CategoriesService
   ) {}
 
   public screenWidth: any;
@@ -62,6 +67,20 @@ export class HomeComponent implements OnInit {
         }
       );
     }, 500);
+    this.getCategory();
+   
+  }
+
+  getCategory(){
+    this.cateService.getCategory().subscribe(
+      (res: any) => {
+        console.log(res);
+        this.categories = res;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   showMoreProducts(): void {
@@ -81,4 +100,5 @@ export class HomeComponent implements OnInit {
       );
     }, 500);
   }
+
 }

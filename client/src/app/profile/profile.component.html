@@ -24,7 +24,7 @@
           nz-button
           type="submit"
           [nzLoading]="loading"
-          [disabled]="canUpdate()"
+          (click)="onSubmit()"
         >
           Update
         </button>
